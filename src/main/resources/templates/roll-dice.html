@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Roll Dice</title>
-</head>
+<head th:replace="partials/partials :: head"></head>
+<style th:replace="partials/partials :: style"></style>
 <body>
+<nav th:replace="partials/partials :: navbar"></nav>
 <h1>Guess the dice roll</h1>
-<div th:each="side : ${possibleResults}">
-    <form th:action="@{/roll-dice/{side}(side=${side})}" method="post">
-        <button type="submit" th:text="${side}"></button>
-    </form>
-</div>
+<div class="container">
+    <div th:each="side : ${possibleResults}">
+        <form th:action="@{/roll-dice/{side}(side=${side})}" method="post">
+            <button type="submit" th:text="${side}"></button>
+        </form>
+    </div>
 
 
-<div th:if="${guess} != null">
-    Your num is <span th:text="${guess}"></span> , my num is <span th:text="${roll}"></span>.
-    <div th:if="${roll == guess}">
-        <span> You got it right</span>
+    <div th:if="${guess} != null">
+        Your num is <span th:text="${guess}"></span> , my num is <span th:text="${roll}"></span>.
+        <div th:if="${roll == guess}">
+            <span> You got it right</span>
+        </div>
+        <div th:if="${roll != guess}">
+            <span> You got it wrong!</span>
+        </div>
+        <form th:action="@{/roll-dice}" method="get">
+            <button type="submit">Go again.</button>
+        </form>
     </div>
-    <div th:if="${roll != guess}">
-        <span> You got it wrong!</span>
-    </div>
-    <form th:action="@{/roll-dice}" method="get">
-        <button type="submit">Go again.</button>
-    </form>
 </div>
+<div th:replace="partials/partials :: footer"></div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
