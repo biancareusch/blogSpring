@@ -11,8 +11,8 @@
         <div class="col">
             <div th:each="post : ${allPosts}">
                 <div class="card">
-                    <div class="card-title">${post.title}</div>
-                    <div class="card-body">${post.body}</div>
+                    <div class="card-title" th:text="${post.title}"></div>
+                    <div class="card-body" th:text="${post.body}"></div>
                     <!--                    <form th:action="@{/posts/{id}(id=${post.id})" method="post">-->
                     <!--                        <button type="submit">see post</button>-->
                     <!--                    </form>-->

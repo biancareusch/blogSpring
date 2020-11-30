@@ -12,23 +12,22 @@ import java.util.List;
 
 @Controller
 public class PostController {
-    @GetMapping("/posts/index")
-    @ResponseBody
-    public List<Post> showPosts(Model model){
+    @GetMapping("/posts")
+    public String showPosts(Model model){
         List<Post> allPosts = new ArrayList<>();
         Post firstPost = new Post(1,"First Post","Hello World!");
         Post secondPost = new Post(2,"new Post", "what's going on");
         allPosts.add(firstPost);
         allPosts.add(secondPost);
         model.addAttribute("allPosts", allPosts);
-        return allPosts;
+        return "posts/index";
     }
-    @GetMapping("/posts/show/{id}")
-    @ResponseBody
-    public Post individualPost(@PathVariable long id){
+    @GetMapping("/posts/{id}")
+    public String individualPost(@PathVariable long id, Model model){
 //        Post thisPost = Post.getPostByID(id);
-        Post thisPost = new Post(id,"show Post","showing individual post");
-        return thisPost;
+        Post thisPost = new Post("show Post","showing individual post");
+        model.addAttribute("post",thisPost);
+        return "posts/show";
     }
     @GetMapping("/posts/create")
     @ResponseBody
