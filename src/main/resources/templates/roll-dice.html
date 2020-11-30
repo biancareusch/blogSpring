@@ -4,8 +4,9 @@
 <style th:replace="partials/partials :: style"></style>
 <body>
 <nav th:replace="partials/partials :: navbar"></nav>
-<h1>Guess the dice roll</h1>
+
 <div class="container">
+    <h1>Guess the dice roll</h1>
     <div th:each="side : ${possibleResults}">
         <form th:action="@{/roll-dice/{side}(side=${side})}" method="post">
             <button type="submit" th:text="${side}"></button>
