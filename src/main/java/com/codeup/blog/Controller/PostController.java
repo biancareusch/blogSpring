@@ -1,7 +1,8 @@
 package com.codeup.blog.Controller;
 
 import com.codeup.blog.Model.PostRepository;
-import com.codeup.blog.Post;
+import com.codeup.blog.Model.Post;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,27 +29,38 @@ public class PostController {
         return "posts/index";
     }
 
+    //    @GetMapping("/posts/search"){
+//        public String search(@RequestParam(name = "search") String searchTitle, Model viewModel){
+//            Post post = postDao.findByTitle(searchTitle);
+//        }
+//    }
+    @GetMapping("/posts/create")
+    public String createPost(Model model) {
+        return "posts/new";
+    }
+
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable long id, Model model) {
-//        Post thisPost = Post.getPostByID(id);
-        Post thisPost = new Post("show Post", "showing individual post");
+        Post thisPost = postDao.getOne(id);
+//        Post thisPost = new Post("show Post", "showing individual post");
         model.addAttribute("post", thisPost);
         return "posts/show";
     }
 
-    @GetMapping("/posts/new")
-    public String createPost() {
-        return "posts/new";
+    @PostMapping("posts/{id}")
+    public String postIndividual(@ModelAttribute Post post, @PathVariable long id, Model model){
+        Post thisPost = postDao.getOne(id);
+        model.addAttribute("post",thisPost);
+        return "posts/show";
     }
 
     @PostMapping("/posts/create")
     @ResponseBody
-    public String createPostView(@RequestParam(name = "title") String title,
-                                 @RequestParam(name = "body") String body) {
+
+    public String createPostView(@Param("title") String title,
+                                 @Param("body") String body, Model model) {
         Post post = new Post(title, body);
         Post postdb = postDao.save(post);
-        return "create a new Post with the id : " + postdb.getID();
+        return " create a new post with post id " + postdb.getID();
     }
-
-
 }

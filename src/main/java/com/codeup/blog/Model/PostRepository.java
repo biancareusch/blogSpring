@@ -1,18 +1,11 @@
 package com.codeup.blog.Model;
 
-import com.codeup.blog.Post;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     Post findByTitle(String title);
-
-    Post findByFirstTitle(String title);
 
     Post findByBody(String body);
     // The following method is equivalent to the built in `getOne` method, there's no need to create this example

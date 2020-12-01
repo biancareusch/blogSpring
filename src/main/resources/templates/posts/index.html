@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-title" th:text="${post.title}"></div>
                     <div class="card-body" th:text="${post.body}"></div>
-                                        <form th:action="@{/posts/{id}(id=${post.ID})}" method="post">
+                                        <form th:action="@{/posts/{id}(id=${post.ID})}" th:value="${post.ID}" method="post">
                                             <button type="submit">see post</button>
                                         </form>
                 </div>
