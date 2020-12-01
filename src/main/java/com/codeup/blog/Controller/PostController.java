@@ -1,5 +1,7 @@
-package com.codeup.blog;
+package com.codeup.blog.Controller;
 
+import com.codeup.blog.Model.PostRepository;
+import com.codeup.blog.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,12 @@ import java.util.List;
 
 @Controller
 public class PostController {
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao){
+        this.postDao = postDao;
+    }
+
     @GetMapping("/posts")
     public String showPosts(Model model){
         List<Post> allPosts = new ArrayList<>();
@@ -19,7 +27,7 @@ public class PostController {
         Post secondPost = new Post(2,"new Post", "what's going on");
         allPosts.add(firstPost);
         allPosts.add(secondPost);
-        model.addAttribute("allPosts", allPosts);
+        model.addAttribute("allPosts", postDao.findAll());
         return "posts/index";
     }
     @GetMapping("/posts/{id}")

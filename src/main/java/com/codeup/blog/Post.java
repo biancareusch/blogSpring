@@ -1,16 +1,25 @@
 package com.codeup.blog;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false)
     private String body;
-    private long ID;
+
 
     public Post(String title, String body){
         this.title = title;
         this.body = body;
     }
     public Post(long ID, String title, String body){
-        this.ID = ID;
+        this.id = ID;
         this.title = title;
         this.body = body;
     }
@@ -19,7 +28,7 @@ public class Post {
 //
 //    }
     public long getID() {
-        return ID;
+        return id;
     }
     public String getTitle() {
         return title;
@@ -29,7 +38,7 @@ public class Post {
     }
 
     public void setID(long ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public void setTitle(String title) {
