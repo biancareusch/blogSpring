@@ -1,4 +1,5 @@
 package com.codeup.blog;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,25 +15,32 @@ public class Post {
     private String body;
 
 
-    public Post(String title, String body){
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
-    public Post(long ID, String title, String body){
+
+    public Post(long ID, String title, String body) {
         this.id = ID;
         this.title = title;
         this.body = body;
     }
 
-//    public Post getPostByID(long id){
+    public Post() {
+    }
+
+
+    //    public Post getPostByID(long id){
 //
 //    }
     public long getID() {
         return id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public String getBody() {
         return body;
     }

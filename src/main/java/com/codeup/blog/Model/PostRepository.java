@@ -1,8 +1,12 @@
 package com.codeup.blog.Model;
 
 import com.codeup.blog.Post;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
@@ -10,7 +14,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post findByFirstTitle(String title);
 
-    Post findByid(Long id);
-
     Post findByBody(String body);
+    // The following method is equivalent to the built in `getOne` method, there's no need to create this example
+//    @Query("from Post a where a.id like ?1")
+//    Post getAdById(long id);
+//
+//    // The following method shows you how to use named parameters in a HQL custom query:
+//    @Query("from Post a where a.title like %:term%")
+//    List<Post> searchByTitleLike(@Param("term") String term);
 }
