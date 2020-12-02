@@ -7,13 +7,17 @@
 
 <div class="container">
     <div clas="row">
-        <div class="col-8">
-            <h3 th:text="${post.title}"></h3>
-            <p th:text="${post.body}"></p>
-        </div>
-        <div>
-            <form th:action="@{/posts/edit/{id}(id=${post.ID})}" th:value="${post.ID}" method="post">
-                <button type="submit">edit Post</button>
+        <div class="col">
+            <h2>Edit your post here</h2>
+            <form th:action="@{/posts/edit}" method="post">
+                <input th:type="hidden" th:name="id" th:value="${post.id}">
+                Post Title:
+                <input th:value="${post.title}" th:name="title" th:id="title">
+                <br>
+                Your post:
+                <input type="text" th:value="${post.body}" th:name="body" th:id="body">
+                <br>
+                <button th:type="submit">Submit</button>
             </form>
         </div>
     </div>

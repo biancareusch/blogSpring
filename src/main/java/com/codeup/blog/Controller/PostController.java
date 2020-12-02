@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -48,19 +49,37 @@ public class PostController {
     }
 
     @PostMapping("posts/{id}")
-    public String postIndividual(@ModelAttribute Post post, @PathVariable long id, Model model){
+    public String postIndividual(@ModelAttribute Post post, @PathVariable long id, Model model) {
         Post thisPost = postDao.getOne(id);
-        model.addAttribute("post",thisPost);
+        model.addAttribute("post", thisPost);
         return "posts/show";
     }
 
     @PostMapping("/posts/create")
     @ResponseBody
-
     public String createPostView(@Param("title") String title,
                                  @Param("body") String body, Model model) {
         Post post = new Post(title, body);
         Post postdb = postDao.save(post);
-        return " create a new post with post id " + postdb.getID();
+        return "/posts";
     }
+
+    @GetMapping("/posts/edit")
+    public String editForm(@RequestParam(name = "id")Long id, Model model) {
+        model.addAttribute("post",postDao.findById(id));
+        Optional<Post> post = postDao.findById(id);
+        System.out.println("post = " + post);
+        return "posts/edit";
+    }
+
+    @PostMapping("posts/edit/{id}")
+    public String editPosts(@RequestParam(name = "id") Long ID,
+                            @RequestParam(name = "title") String title,
+                            @RequestParam(name = "body") String body) {
+        Post post = new Post(ID, title,body);
+        System.out.println("post = " + post);
+        postDao.save(post);
+        return "redirect:posts/" + ID.toString();
+    }
+
 }

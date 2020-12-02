@@ -14,14 +14,13 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    public Post(long ID, String title, String body) {
-        this.id = ID;
+    public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
     }
@@ -29,10 +28,6 @@ public class Post {
     public Post() {
     }
 
-
-    //    public Post getPostByID(long id){
-//
-//    }
     public long getID() {
         return id;
     }
@@ -45,8 +40,8 @@ public class Post {
         return body;
     }
 
-    public void setID(long ID) {
-        this.id = ID;
+    public void setID(long id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
