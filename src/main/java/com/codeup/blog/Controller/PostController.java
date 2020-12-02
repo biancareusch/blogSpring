@@ -21,11 +21,6 @@ public class PostController {
 
     @GetMapping("/posts")
     public String showPosts(Model model) {
-        List<Post> allPosts = new ArrayList<>();
-        Post firstPost = new Post(1, "First Post", "Hello World!");
-        Post secondPost = new Post(2, "new Post", "what's going on");
-        allPosts.add(firstPost);
-        allPosts.add(secondPost);
         model.addAttribute("allPosts", postDao.findAll());
         return "posts/index";
     }
@@ -35,39 +30,33 @@ public class PostController {
 //            Post post = postDao.findByTitle(searchTitle);
 //        }
 //    }
+    @GetMapping("/posts/{id}")
+    public String showPost(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getOne(id));
+        return "posts/show";
+    }
+    @PostMapping("/posts/{id}")
+    public String postIndividual(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getOne(id));
+        return "posts/show";
+    }
+
     @GetMapping("/posts/create")
-    public String createPost(Model model) {
+    public String showCreateForm(Model model) {
         return "posts/new";
     }
 
-    @GetMapping("/posts/{id}")
-    public String individualPost(@PathVariable long id, Model model) {
-        Post thisPost = postDao.getOne(id);
-//        Post thisPost = new Post("show Post", "showing individual post");
-        model.addAttribute("post", thisPost);
-        return "posts/show";
-    }
-
-    @PostMapping("/posts/{id}")
-    public String postIndividual(@ModelAttribute Post post, @PathVariable long id, Model model) {
-        Post thisPost = postDao.getOne(id);
-        model.addAttribute("post", thisPost);
-        return "posts/show";
-    }
-
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPostView(@Param("title") String title,
-                                 @Param("body") String body, Model model) {
+    public String createPostView(@RequestParam(name = "title") String title,
+                                 @RequestParam(name = "body") String body) {
         Post post = new Post(title, body);
-        Post postdb = postDao.save(post);
-        return "/posts";
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getOne(id));
-
         return "posts/edit";
     }
 
@@ -79,7 +68,6 @@ public class PostController {
         post.setTitle(title);
         post.setBody(body);
         postDao.save(post);
-
         return "redirect:/posts/" + post.getID();
     }
 

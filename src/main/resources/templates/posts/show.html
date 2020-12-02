@@ -12,11 +12,8 @@
             <p th:text="${post.body}"></p>
         </div>
         <div>
-            <form th:action="@{/posts/{id}/edit(id=${post.ID})}" th:value="${post.ID}" method="post">
-                <button type="submit">edit Post</button>
-            </form>
-            <form th:action="@{posts/{id}/delete(id=${post.getID()})}" th:method="post">
-                <button th:type="submit" class="btn btn-danger">Delete</button>
+            <form th:action="@{/posts/{id}/edit(id=${post.ID})}" method="post">
+                <button type="button" class="btn btn-success">Edit</button>
             </form>
         </div>
     </div>

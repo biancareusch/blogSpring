@@ -6,18 +6,20 @@
 <nav th:replace="/partials/partials :: navbar"></nav>
 
 <div class="container">
-    <div clas="row">
+    <div class="row">
         <div class="col">
             <h2>Edit your post here</h2>
-            <form th:action="@{/posts/{id}/edit(id=${post.getID()})}" method="post">
+            <form th:action="@{/posts/{id}/edit(id=${post.ID})}" method="post">
                 Post Title:
-                <input  name="title" id="title" th:value="${post.getTitle()}">
+                <input  name="title" th:value="${post.title}"/>
                 <br>
                 Your post:
-                <input type="text" name="body" id="body" th:value="${post.getBody()}">
+                <input type="text" name="body" th:value="${post.body}"/>
                 <br>
                 <button th:type="submit" class="btn">Submit</button>
-
+            </form>
+            <form th:action="@{/posts/{id}/delete(id=${post.ID})}" th:method="delete">
+                <button th:type="submit" class="btn btn-danger">Delete</button>
             </form>
         </div>
     </div>
