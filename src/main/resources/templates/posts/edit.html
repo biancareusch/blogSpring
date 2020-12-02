@@ -9,15 +9,15 @@
     <div clas="row">
         <div class="col">
             <h2>Edit your post here</h2>
-            <form th:action="@{/posts/edit}" method="post">
-                <input th:type="hidden" th:name="id" th:value="${post.id}">
+            <form th:action="@{/posts/{id}/edit(id=${post.getID()})}" method="post">
                 Post Title:
-                <input th:value="${post.title}" th:name="title" th:id="title">
+                <input  name="title" id="title" th:value="${post.getTitle()}">
                 <br>
                 Your post:
-                <input type="text" th:value="${post.body}" th:name="body" th:id="body">
+                <input type="text" name="body" id="body" th:value="${post.getBody()}">
                 <br>
-                <button th:type="submit">Submit</button>
+                <button th:type="submit" class="btn">Submit</button>
+
             </form>
         </div>
     </div>
