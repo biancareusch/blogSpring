@@ -5,25 +5,18 @@
 <body>
 <nav th:replace="/partials/partials :: navbar"></nav>
 
-<h1>All your posts</h1>
 <div class="container">
-    <div clas="row">
-        <div class="col">
-            <div th:each="post : ${allPosts}">
-                <div class="card">
-                    <div class="card-title" th:text="${post.title}"></div>
-                    <div class="card-body" th:text="${post.body}"></div>
-                                        <form th:action="@{/posts/{id}(id=${post.ID})}" th:value="${post.ID}" method="post">
-                                            <button type="submit">see post</button>
-                                        </form>
-                </div>
-            </div>
+    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+        Post Title:
+        <input th:field="*{title}"/>
+        <br>
+        Your post:
+        <input th:field="*{body}">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
 
-        </div>
-    </div>
 </div>
-
-
 <div th:replace="partials/partials :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

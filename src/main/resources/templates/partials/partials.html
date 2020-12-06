@@ -9,7 +9,7 @@
 </head>
 <style th:fragment="style">
     .footer {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         width: 100%;
         background: grey;
@@ -27,6 +27,9 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/posts">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts/create">Create a new Post</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/roll-dice">Roll dice Guess</a>

@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/resources/application.properties
+application.properties
+resources/application.properties
+main/resources/application.properties
+/Users/bianca/IdeaProjects/blog/src/main/application.properties
+/blog/src/main/application.properties
