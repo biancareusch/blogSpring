@@ -32,7 +32,7 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String showPost(@PathVariable long id, Model model) {
         model.addAttribute("post", postDao.getOne(id));
-
+        model.addAttribute("user",userDao.getOne(1L));
         return "posts/show";
     }
     @PostMapping("/posts/{id}")
@@ -44,16 +44,15 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String showCreateForm(Model model) {
-        return "posts/new";
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPostView(@RequestParam(name = "title") String title,
-                                 @RequestParam(name = "body") String body) {
-        User user = userDao.getOne(1L);
-        Post post = new Post(title, body, user);
+    public String createPostView(@ModelAttribute Post post) {
+        post.setUser(userDao.getOne(1L));
         postDao.save(post);
-        return "redirect:/posts";
+        return "redirect:/posts/" + post.getID();
     }
 
     @GetMapping("/posts/{id}/edit")
