@@ -1,9 +1,11 @@
 package com.codeup.blog.Controller;
 
+
 import com.codeup.blog.Model.PostRepository;
 import com.codeup.blog.Model.Post;
 import com.codeup.blog.Model.User;
 import com.codeup.blog.Model.UserRepository;
+import com.codeup.blog.Services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailSvc;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailSvc) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailSvc = emailSvc;
     }
 
     @GetMapping("/posts")
@@ -51,8 +55,9 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPostView(@ModelAttribute Post post) {
         post.setUser(userDao.getOne(1L));
-        postDao.save(post);
-        return "redirect:/posts/" + post.getID();
+         Post dbPost = postDao.save(post);
+        emailSvc.prepAndSend(dbPost, "Post has been created", "You can find it with the id of " + dbPost.getID());
+        return "redirect:/posts/" + dbPost.getID();
     }
 
     @GetMapping("/posts/{id}/edit")
