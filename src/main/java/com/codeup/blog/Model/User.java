@@ -25,19 +25,27 @@ public class User {
 
     public User() {
     }
+//Read
+    public User(long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+//Create
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
-//    public User(long id, String username, String email, String password) {
-//        this.id = id;
-//        this.username = username;
-//        this.email = email;
-//        this.password = password;
-//    }
-//
-//    public User(String username, String email, String password) {
-//        this.username = username;
-//        this.email = email;
-//        this.password = password;
-//    }
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        posts = copy.posts;
+    }
 
     public long getId() {
         return id;

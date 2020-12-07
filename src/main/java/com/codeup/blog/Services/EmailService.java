@@ -20,7 +20,7 @@ public class EmailService {
     public void prepAndSend(Post post, String subject, String body){
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo(post.getUser().getEmail());
+        msg.setTo(post.getOwner().getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 
