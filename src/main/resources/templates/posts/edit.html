@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="/partials/partials :: head"></head>
 <style th:replace="/partials/partials :: style"></style>
 <body>
@@ -8,10 +9,17 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <div sec:authorize="isAuthenticated()">
+                This content is only shown to authenticated users.
+
+                User ID: <span th:text="${#authentication.principal.id}"/>
+                Username: <span th:text="${#authentication.principal.username}"/>
+                Email: <span th:text="${#authentication.principal.email}"/>
+            </div>
             <h2>Edit your post here</h2>
             <form th:action="@{/posts/{id}/edit(id=${post.ID})}" method="post">
                 Post Title:
-                <input  name="title" th:value="${post.title}"/>
+                <input name="title" th:value="${post.title}"/>
                 <br>
                 Your post:
                 <input type="text" name="body" th:value="${post.body}"/>

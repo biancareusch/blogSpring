@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
+
+body{
+    padding-top: 3em;
+    padding-bottom: 3em;
+    font-family: 'Assistant', sans-serif;
+}
+.outerBorder{
+    /*box-shadow: grey 10px 10px 10px 10px;*/
+    /*font-family: 'Assistant', sans-serif;*/
+    /*font-family: 'Work Sans', sans-serif;*/
+
+}
+.jumbotron{
+    background-image: url("/static/img/blueblackbanner.png");
+    background-color: #212121;
+    color: lightgray;
+}
+a:hover {
+    border: #8e98d2 2px solid;
+    color: #8e98d2;
+}

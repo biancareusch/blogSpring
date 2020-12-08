@@ -63,11 +63,11 @@ public class Post {
         this.body = body;
     }
 
-    public User getUser() {
+    public User getOwner() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setOwner(User user) {
         this.user = user;
     }
 }

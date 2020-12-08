@@ -6,6 +6,7 @@ import com.codeup.blog.Model.Post;
 import com.codeup.blog.Model.User;
 import com.codeup.blog.Model.UserRepository;
 import com.codeup.blog.Services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,14 +36,16 @@ public class PostController {
 //    }
     @GetMapping("/posts/{id}")
     public String showPost(@PathVariable long id, Model model) {
-        model.addAttribute("post", postDao.getOne(id));
-        model.addAttribute("user",userDao.getOne(1L));
+        Post postdb = postDao.getOne(id);
+        model.addAttribute("post", postdb);
+        model.addAttribute("user",postdb.getOwner());
         return "posts/show";
     }
     @PostMapping("/posts/{id}")
     public String postIndividual(@PathVariable long id, Model model) {
-        model.addAttribute("post", postDao.getOne(id));
-        model.addAttribute("user",userDao.getOne(1L));
+        Post postdb = postDao.getOne(id);
+        model.addAttribute("post", postdb);
+        model.addAttribute("user",postdb.getOwner());
         return "posts/show";
     }
 
@@ -54,7 +57,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPostView(@ModelAttribute Post post) {
-        post.setUser(userDao.getOne(1L));
+        User userDb = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setOwner(userDb);
          Post dbPost = postDao.save(post);
         emailSvc.prepAndSend(dbPost, "Post has been created", "You can find it with the id of " + dbPost.getID());
         return "redirect:/posts/" + dbPost.getID();

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/partials/partials :: head">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
+    </style>
+</head>
+<link rel="stylesheet" th:href="@{/img/css/home.css}">
+<style th:replace="/partials/partials :: style"></style>
+<body>
+<nav th:replace="/partials/partials :: navbar"></nav>
+<div class="container outerBorder border border-light">
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <h1 class="display-4">Welcome!</h1>
+            <p class="lead">This is a simple Blog application that allows me to document my journey in to the Tech
+                Industry.
+                From learning how to become a Fullstack Web Developer to learning Intrusion Detection at Sac to building
+                my
+                own personal AI Assistant for fun.</p>
+            <hr>
+            <!--       Start something that matters!     <p class="lead">Designed from the front to the backend by biancar.</p> save for about me-->
+            <p class="my-4">Sign up and start documenting and sharing your own journey!</p>
+            <div class="linkContainer " style="display: flex; justify-content: space-between;">
+                <a href="/sign-up"><img alt="signup button" th:src="@{/img/signup.png}"
+                                        class="img-fluid rounded-right" width="150">
+
+                </a>
+                <a href="/login"><img alt="login button" th:src="@{/img/login.png}"
+                                      class="img-fluid rounded-left"
+                                      width="150">
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!--    left half os screen-->
+    <div class="row p-2">
+        <div class="col-md-8" style="display: flex; flex-wrap: wrap;">
+            <div th:each="post : ${allPosts}">
+                <div class="card m-2">
+                    <img class="card-img-top img-fluid" src="https://picsum.photos/300/200"
+                         alt="randomized picture">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${post.title}"></h5>
+                        <!--                        <h6 class="card-subtitle mb-2 text-muted" th:text="${user.username}"></h6>-->
+                        <p class="card-text" th:text="${post.body}"></p>
+                        <form th:action="@{/posts/{id}(id=${post.ID})}" th:value="${post.ID}" method="post">
+                            <button class="btn btn-secondary" type="submit">see post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        right half of screen-->
+        <div class="col-md-4 text-right m-0">
+            <h2>About biancar.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Facilisis gravida neque convallis a cras semper auctor. Elit at imperdiet dui
+                accumsan sit amet nulla facilisi. Porttitor lacus luctus accumsan tortor posuere. Nunc non blandit massa
+                enim. Euismod lacinia at quis risus sed vulputate odio. Cursus euismod quis viverra nibh. Elit sed
+                vulputate mi sit amet mauris commodo. Luctus accumsan tortor posuere ac ut consequat semper. Massa enim
+                nec dui nunc mattis enim ut tellus. In mollis nunc sed id semper risus in hendrerit gravida. Porta lorem
+                mollis aliquam ut porttitor leo a diam. Gravida dictum fusce ut placerat. Dolor sit amet consectetur
+                adipiscing elit ut aliquam. Vel orci porta non pulvinar neque laoreet suspendisse interdum</p>
+        </div>
+
+    </div>
+
+
+    <div class="visitor counter"></div>
+</div>
+
+
+<!--<div th:replace="partials/partials :: footer"></div>-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
