@@ -2,6 +2,7 @@
 
 body{
     padding-top: 3em;
+    padding-bottom: 3em;
     font-family: 'Assistant', sans-serif;
 }
 .outerBorder{
@@ -14,4 +15,8 @@ body{
     background-image: url("/static/img/blueblackbanner.png");
     background-color: #212121;
     color: lightgray;
+}
+a:hover {
+    border: #8e98d2 2px solid;
+    color: #8e98d2;
 }
