@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/partials :: head">
+<head th:replace="partials/pagePieces :: head">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
     </style>
 </head>
 <link rel="stylesheet" th:href="@{/img/css/home.css}">
-<style th:replace="/partials/partials :: style"></style>
+<style th:replace="partials/pagePieces :: style"></style>
 <body>
-<nav th:replace="/partials/partials :: navbar"></nav>
+<nav th:replace="partials/pagePieces :: navbar"></nav>
 <div class="container outerBorder border border-light">
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
@@ -70,7 +70,7 @@
     </div>
 
 
-    <div class="visitor counter"></div>
+    <div class="visitor counter" th:text="${counter}"> Visitors.</div>
 </div>
 
 

@@ -18,6 +18,7 @@ public class HomeController {
     private final PostRepository postDao;
     private final UserRepository userDao;
     private final EmailService emailSvc;
+    private int counter;
 
     public HomeController(PostRepository postDao, UserRepository userDao, EmailService emailSvc) {
         this.postDao = postDao;
@@ -27,7 +28,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String landingPage(Model model) {
+        counter += 1;
         model.addAttribute("allPosts", postDao.findAll());
+        model.addAttribute("counter", counter);
 //        for each owner add their username
 //        Post postdb = postDao.getOne(id);
 //        model.addAttribute("post", postdb);
