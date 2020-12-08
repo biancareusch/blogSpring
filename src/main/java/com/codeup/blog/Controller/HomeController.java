@@ -32,7 +32,7 @@ public class HomeController {
 //        Post postdb = postDao.getOne(id);
 //        model.addAttribute("post", postdb);
 //        model.addAttribute("user",postdb.getOwner());
-        return "/home";
+        return "home";
     }
 
     @GetMapping("/roll-dice/")
