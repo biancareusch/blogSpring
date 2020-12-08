@@ -25,10 +25,15 @@ public class HomeController {
         this.userDao = userDao;
         this.emailSvc = emailSvc;
     }
-
     @GetMapping("/")
     public String landingPage(Model model) {
         counter += 1;
+        model.addAttribute("counter", counter);
+        return "main";
+    }
+
+    @GetMapping("/blog")
+    public String blogPage(Model model) {
         model.addAttribute("allPosts", postDao.findAll());
         model.addAttribute("counter", counter);
 //        for each owner add their username

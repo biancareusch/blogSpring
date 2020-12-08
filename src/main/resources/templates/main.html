@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/pagePieces :: head"></head>
-<style th:replace="partials/pagePieces :: style"></style>
-<link rel="stylesheet" th:href="@{/img/css/home.css}">
+<head th:replace="partials/pagePieces :: head">
+</head>
+
+
 <body>
-<nav th:replace="partials/pagePieces :: navbar"></nav>
 
-<div class="container">
-    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-        Post Title:
-        <input th:field="*{title}"/>
-        <br>
-        Your post:
-        <input th:field="*{body}">
-        <br>
-        <button type="submit">Submit</button>
-    </form>
 
-</div>
-<div th:replace="partials/pagePieces :: footer"></div>
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
