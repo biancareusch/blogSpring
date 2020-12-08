@@ -8,20 +8,29 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <style th:fragment="style">
+    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
 
     .footer {
-        position: fixed;
         bottom: 0;
         width: 100%;
-        background: grey;
+        background-color: rgba(54, 105, 195, 0.7);
+        margin-top: 1em;
     }
     .navbar{
-        background-color: #a6a6a6;
+        position: fixed;
+        background-color: rgba(54, 105, 195, 0.7);
+        z-index: 1030;
+        top:0;
+        left:0;
+        right:0;
+    }
+    .logo{
+        border-radius: 3px;
     }
 </style>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="/"><img alt="logo" th:src="@{/img/biancar.png}" class="img-fluid" width="150"></a>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img alt="logo" th:src="@{/img/biancar.png}" class="img-fluid logo" width="150"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -73,34 +82,39 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
 
-<div th:fragment="footer" class="footer fixed-bottom">
+
+
+
+
+<div th:fragment="footer" class="footer">
     <footer class="page-footer font-small pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 mb-4">
-                    <form class="form-inline">
-                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                               aria-label="Search">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </form>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <form class="input-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Your email"
-                               aria-label="Your email" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-sm btn-outline-white my-0" type="button">Sign up</button>
-                        </div>
-                    </form>
-                </div>
+<!--                <div class="col-md-6 mb-4">-->
+<!--                    <form class="form-inline">-->
+<!--                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"-->
+<!--                               aria-label="Search">-->
+<!--                        <i class="fas fa-search" aria-hidden="true"></i>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                sign up for newsletter-->
+<!--                <div class="col-md-6 mb-4">-->
+<!--                    <form class="input-group">-->
+<!--                        <input type="text" class="form-control form-control-sm" placeholder="Your email"-->
+<!--                               aria-label="Your email" aria-describedby="basic-addon2">-->
+<!--                        <div class="input-group-append">-->
+<!--                            <button class="btn btn-sm btn-outline-white my-0" type="button">Sign up</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
             </div>
         </div>
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: Bianca.
+        <div class="footer-copyright text-center py-3">© 2020 biancar.
         </div>
     </footer>
 </div>

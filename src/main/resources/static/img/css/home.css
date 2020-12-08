@@ -1,22 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');*/
 
-body{
-    padding-top: 3em;
-    padding-bottom: 3em;
+body {
+    padding-top: 0;
+    padding-bottom: 0;
     font-family: 'Assistant', sans-serif;
 }
-.outerBorder{
+
+.outerBorder {
+    margin-top: 6rem;
     /*box-shadow: grey 10px 10px 10px 10px;*/
     /*font-family: 'Assistant', sans-serif;*/
     /*font-family: 'Work Sans', sans-serif;*/
-
+}
+.about{
+    background: rgba(223, 237, 255, 0.8);
+    border: 1px solid rgba(223, 237, 255, 0.75);
+    border-radius: 4px;
+    padding: 0.5rem;
+    /*opacity: 0.5;*/
 }
 .jumbotron{
-    background-image: url("/static/img/blueblackbanner.png");
-    background-color: #212121;
-    color: lightgray;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
 }
-a:hover {
+.jumbotron .container {
+    position:relative;
+    z-index: 2;
+    padding-bottom: 2.25rem;
+    padding-top: 0.5rem;
+    padding-right: 0;
+    padding-left:0;
+    background: rgba(255, 255, 252,0.7);
+    border-radius: 3px;
+    color: #00002f;
+}
+
+.jumbotron-background {
+    object-fit: cover;
+    font-family: 'object-fit: cover;';
+    position:absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0.8;
+}
+img.blur {
+    -webkit-filter: blur(8px);
+    min-width: 150%;
+    filter: blur(8px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+}
+
+a:not(.signup, .login):hover {
     border: #8e98d2 2px solid;
     color: #8e98d2;
+}
+
+.signup:hover {
+    border-right: #8e98d2 2px solid;
+    border-top: #8e98d2 2px solid;
+    border-bottom: #8e98d2 2px solid;
+    border-radius: 5px;
+}
+
+.login:hover {
+    border-left: #8e98d2 2px solid;
+    border-top: #8e98d2 2px solid;
+    border-bottom: #8e98d2 2px solid;
+    border-radius: 5px;
+}
+
+.large {
+    font-size: x-large;
+}
+
+.visitor-counter {
+    display: flex;
+    justify-content: flex-end;
 }

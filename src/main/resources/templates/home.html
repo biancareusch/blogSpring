@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/pagePieces :: head">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;500&family=Work+Sans:wght@100;300&display=swap');
-    </style>
 </head>
 <link rel="stylesheet" th:href="@{/img/css/home.css}">
 <style th:replace="partials/pagePieces :: style"></style>
@@ -11,26 +8,31 @@
 <nav th:replace="partials/pagePieces :: navbar"></nav>
 <div class="container outerBorder border border-light">
     <div class="row">
-        <div class="jumbotron jumbotron-fluid">
-            <h1 class="display-4">Welcome!</h1>
-            <p class="lead">This is a simple Blog application that allows me to document my journey in to the Tech
-                Industry.
-                From learning how to become a Fullstack Web Developer to learning Intrusion Detection at Sac to building
-                my
-                own personal AI Assistant for fun.</p>
-            <hr>
-            <!--       Start something that matters!     <p class="lead">Designed from the front to the backend by biancar.</p> save for about me-->
-            <p class="my-4">Sign up and start documenting and sharing your own journey!</p>
-            <div class="linkContainer " style="display: flex; justify-content: space-between;">
-                <a href="/sign-up"><img alt="signup button" th:src="@{/img/signup.png}"
-                                        class="img-fluid rounded-right" width="150">
+        <div class="col-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="jumbotron-background">
+                    <img alt="neuron" th:src="@{/img/neuron.png}" class="blur">
+                </div>
+                <div class="container">
+                    <h1 class="display-4 m-5">Welcome!</h1>
+                    <p class="lead m-5">This is a simple Blog application that allows me to document my journey in to the
+                        Tech Industry.
+                        From learning how to become a Full Stack Web Developer to learning about Cybersecurity at SAC to
+                        building my own personal AI Assistant for fun.</p>
+                    <hr>
+                    <!--       Start something that matters! -->
+                    <p class="lead m-5">Sign up and start documenting and sharing your own journey!</p>
 
-                </a>
-                <a href="/login"><img alt="login button" th:src="@{/img/login.png}"
-                                      class="img-fluid rounded-left"
-                                      width="150">
+                    <div class="linkContainer " style="display: flex; justify-content: space-between;">
+                        <a href="/sign-up"><img alt="signup button" th:src="@{/img/signup.png}"
+                                                class="img-fluid rounded-right signup" width="150"></a>
+                        <a href="/login"><img alt="login button" th:src="@{/img/login.png}"
+                                              class="img-fluid rounded-left login"
+                                              width="150"></a>
+                    </div>
 
-                </a>
+
+                </div>
             </div>
         </div>
     </div>
@@ -48,33 +50,54 @@
                         <!--                        <h6 class="card-subtitle mb-2 text-muted" th:text="${user.username}"></h6>-->
                         <p class="card-text" th:text="${post.body}"></p>
                         <form th:action="@{/posts/{id}(id=${post.ID})}" th:value="${post.ID}" method="post">
-                            <button class="btn btn-secondary" type="submit">see post</button>
+                            <button class="btn btn-outline-primary my-2" type="submit">see post</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <!--        right half of screen-->
-        <div class="col-md-4 text-right m-0">
-            <h2>About biancar.</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Facilisis gravida neque convallis a cras semper auctor. Elit at imperdiet dui
-                accumsan sit amet nulla facilisi. Porttitor lacus luctus accumsan tortor posuere. Nunc non blandit massa
-                enim. Euismod lacinia at quis risus sed vulputate odio. Cursus euismod quis viverra nibh. Elit sed
-                vulputate mi sit amet mauris commodo. Luctus accumsan tortor posuere ac ut consequat semper. Massa enim
-                nec dui nunc mattis enim ut tellus. In mollis nunc sed id semper risus in hendrerit gravida. Porta lorem
-                mollis aliquam ut porttitor leo a diam. Gravida dictum fusce ut placerat. Dolor sit amet consectetur
-                adipiscing elit ut aliquam. Vel orci porta non pulvinar neque laoreet suspendisse interdum</p>
+        <div class="col-md-4 text-center m-0">
+            <div class="about">
+            <h2 class="m-2">About biancar.</h2>
+            <p class="m-2">Hi everyone, my name is Bianca and I’ve built this application. I’m currently a Codeup
+                student learning
+                full-stack web development, where I've learned how to design the views, the controllers, and the models
+                for this website.
+                I can honestly say I’m more passionate about backend development( hope you can’t tell), so if you have
+                any suggestions on how to make biancar.dev prettier, let me know!
+                <br>
+                <br>
+                I’m also enrolled at SAC for an Associates Degree in Cybersecurity and Information Assurance, which I
+                will finish in the Spring of 2021.
+                My real passion project is the personal assistant AI I am trying to build, I really want it to be
+                personalized to me and my voice, and be able to answer any command I can think of without errors. <em>*knows
+                    nothing about machine learning*</em>
+                <br>
+            <hr>
+            <br>
+            I strongly believe there’s nothing you can’t do, and there’s nothing you can’t learn. Nothing's too hard
+            or too difficult, just challenges that help you grow.
+            <br>
+            <br>
+            So I really hope you can find some inspiration in this and
+            <div class="large">start something that matters</div>
+            to you. Anything, any project you could think of. Just start and share your thoughts, feelings, and
+            progress with us :)
+                </p>
+                </div>
         </div>
 
     </div>
 
-
-    <div class="visitor counter" th:text="${counter}"> Visitors.</div>
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 visitor-counter" th:text="${counter} +' Visitors'"></div>
+    </div>
 </div>
 
 
-<!--<div th:replace="partials/partials :: footer"></div>-->
+<div th:replace="partials/pagePieces :: footer"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
