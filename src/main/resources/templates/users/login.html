@@ -11,7 +11,8 @@
 </style>
 <body>
 <nav th:replace="partials/pagePieces :: navbar"></nav>
-<div class="container d-flex align-items-start flex-column">
+<div class="container d-flex align-items-start flex-column justify-content-space-between">
+    <div class="card">
     <h1>Log In</h1>
     <div class="row">
         <div class="col-10 mb-auto p-2">
@@ -35,14 +36,14 @@
             </form>
         </div>
     </div>
+    </div>
 
 
     <div class="row">
-        <div class="card text-center p-2">
+        <div class="card text-center align-self-end p-2">
             <p>Don't have an account? Create one!</p>
-            <br>
-            <p>It'll only take a second.</p>
-            <br>
+            <p>It'll only take a second.</p><br>
+
             <a href="/sign-up">
                 <button class="btn btn-outline-secondary">Sign up!</button>
             </a>
