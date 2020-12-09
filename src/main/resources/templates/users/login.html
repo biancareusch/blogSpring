@@ -19,20 +19,35 @@
     <div th:if="${param.logout}">
         You have been logged out.
     </div>
+    <div class="row">
+        <div class="col-10">
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" class="form-control" name="username" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" class="form-control" name="password" type="password"/>
+                </div>
+                <!--        <input type="submit" value="Log In"/>-->
+                <button type="submit" value="Log In" class="btn btn-outline-primary">Login</button>
+            </form>
+        </div>
+    </div>
 
-    <form th:action="@{/login}" method="post">
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text"/>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password"/>
-<!--        <input type="submit" value="Log In"/>-->
-        <button type="submit" value="Log In" class="btn btn-outline-primary"></button>
-    </form>
-    Don't have an account? Create one!
-    It'll only take a second.
-    <a href="/sign-up">
-        <button class="btn btn-outline-secondary">Sign up!</button>
-    </a>
+
+    <div class="row">
+        <div class="card">
+            Don't have an account? Create one!
+            <br>
+            It'll only take a second.
+            <br>
+            <a href="/sign-up">
+                <button class="btn btn-outline-secondary">Sign up!</button>
+            </a>
+        </div>
+    </div>
 </div>
 </body>
 </html>
