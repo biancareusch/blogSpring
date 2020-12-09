@@ -11,10 +11,10 @@
 </style>
 <body>
 <nav th:replace="partials/pagePieces :: navbar"></nav>
-<div class="container">
+<div class="container d-flex align-items-start flex-column">
     <h1>Log In</h1>
     <div class="row">
-        <div class="col-10">
+        <div class="col-10 mb-auto p-2">
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -38,10 +38,10 @@
 
 
     <div class="row">
-        <div class="card d-flex align-self-end text-center">
-            Don't have an account? Create one!
+        <div class="card text-center p-2">
+            <p>Don't have an account? Create one!</p>
             <br>
-            It'll only take a second.
+            <p>It'll only take a second.</p>
             <br>
             <a href="/sign-up">
                 <button class="btn btn-outline-secondary">Sign up!</button>
