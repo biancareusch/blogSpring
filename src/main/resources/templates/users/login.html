@@ -13,9 +13,9 @@
 <nav th:replace="partials/pagePieces :: navbar"></nav>
 <div class="container d-flex align-items-start flex-column justify-content-space-between">
     <div class="card">
-    <h1>Log In</h1>
     <div class="row">
         <div class="col-10 mb-auto p-2">
+            <h1>Log In</h1>
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -24,16 +24,16 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input id="password" class="form-control" name="password" type="password"/>
-                    <div th:if="${param.error}" class="invalid-feedback">
-                        Invalid Username and Password.
-                    </div>
-                </div>
-                <div th:if="${param.logout}" class="valid-feedback">
-                    You have been logged out.
                 </div>
                 <!--        <input type="submit" value="Log In"/>-->
                 <button type="submit" value="Log In" class="btn btn-outline-primary">Login</button>
             </form>
+            <div th:if="${param.error}" class="invalid-feedback">
+                Invalid Username and Password.
+            </div>
+            <div th:if="${param.logout}" class="valid-feedback">
+                You have been logged out.
+            </div>
         </div>
     </div>
     </div>
