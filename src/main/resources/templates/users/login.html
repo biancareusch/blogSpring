@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Log In</title>
+<head th:replace="partials/pagePieces :: head">
 </head>
 <link rel="stylesheet" th:href="@{/img/css/home.css}">
+<style th:replace="partials/pagePieces :: style"></style>
+<style>
+    body {
+        margin-top: 6rem;
+    }
+</style>
 <body>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+<nav th:replace="partials/pagePieces :: navbar"></nav>
+<div class="container">
+    <h1>Log In</h1>
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
-Don't have an account? Create one!
-<a href="/sign-up"><button class="btn btn-secondary">Sign up!</button></a>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text"/>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password"/>
+<!--        <input type="submit" value="Log In"/>-->
+        <button type="submit" value="Log In" class="btn btn-outline-primary"></button>
+    </form>
+    Don't have an account? Create one!
+    It'll only take a second.
+    <a href="/sign-up">
+        <button class="btn btn-outline-secondary">Sign up!</button>
+    </a>
+</div>
 </body>
 </html>
