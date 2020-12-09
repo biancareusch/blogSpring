@@ -8,13 +8,17 @@
     body {
         margin-top: 6rem;
     }
+    .card{
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+    }
 </style>
 <body>
 <nav th:replace="partials/pagePieces :: navbar"></nav>
-<div class="container d-flex align-items-start flex-column justify-content-space-between">
+<div class="container d-flex align-items-center flex-column">
     <div class="card">
     <div class="row">
-        <div class="col-10 mb-auto p-2">
+        <div class="col-10 m-auto p-4">
             <h1>Log In</h1>
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
